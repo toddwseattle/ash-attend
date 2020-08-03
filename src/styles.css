@@ -1,0 +1,23 @@
+html {
+    font: 1em sans-serif;
+}
+.title-box {
+    background-color:rgb(192, 155, 116);
+
+}
+.title-box h1 {
+    color: rgb(197,103,40);
+}
+.login-box {
+    background-color: rgb(170,195,236);
+    color: rgb(197,103,40);
+}
+.login-box button {
+    background-color: red;
+    color: white;
+    padding:5px 6px;
+    text-align: center;
+    display: inline-block;
+    font-size: 1em;
+    width:  7em;
+}

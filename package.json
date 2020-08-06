@@ -4,7 +4,7 @@
   "description": "Ashesi Attendance System for Web Development Class 2020",
   "main": "/src/script/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/toddwseattle/ash-attend#readme",
   "devDependencies": {
-    "http-server": "^0.12.3"
+    "http-server": "^0.12.3",
+    "jest": "^26.2.2"
   }
 }

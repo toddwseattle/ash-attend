@@ -11,19 +11,17 @@ class HTMLTable {
   constructor(headers) {
     if (Array.isArray(headers) && headers.length > 0) {
       if (typeof headers[0] === "string") {
-        this.headers.forEach((h) => {
+        headers.forEach((h) => {
           this.columns.push({ key: h, label: h });
         });
       } else if (
         headers[0].hasOwnProperty("key") &&
         headers[0].hasOwnProperty("label")
       ) {
-        this.headers.forEach((h) => {
+        headers.forEach((h) => {
           this.columns.push(h);
         });
       }
-    } else {
-      console.log("constructor should be an array of strings or {key, label}");
     }
   }
   getHeaders() {

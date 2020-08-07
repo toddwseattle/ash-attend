@@ -47,3 +47,84 @@ describe("basic HTMLTable Class Tests", () => {
     });
   });
 });
+describe("headers are created and managed properly work properly", () => {
+  let columns = [];
+  let tbl = {};
+  let hr = {};
+  beforeEach(() => {
+    columns = [
+      { key: "key1", label: "label1" },
+      { key: "key2", label: "label2" },
+      { key: "key3", label: "label3" },
+    ];
+    tbl = new htmlTable(columns);
+    hr = tbl.getHeaders();
+  });
+  test("should return an object", () => {
+    expect(typeof hr).toBe("object");
+  });
+  test("should return an DOM node with # children==columns", () => {
+    expect(hr.childNodes.length).toBe(columns.length);
+  });
+  test("should create ids based on the keys for the children", () => {
+    hr.childNodes.forEach((v, i) => {
+      expect(v.id).toBe(`${tbl.id}-${columns[i].key}-hd`);
+    });
+  });
+  test("should have the labels in each node", () => {
+    hr.childNodes.forEach((v, i) => {
+      expect(v.innerHTML).toBe(columns[i].label);
+    });
+  });
+});
+describe("the table should return rows of values", () => {
+  beforeEach(() => {
+    columns = [
+      { key: "key1", label: "label1" },
+      { key: "key2", label: "label2" },
+      { key: "key3", label: "label3" },
+    ];
+    values = [
+      {
+        key1: "row-1-key-1",
+        key2: "row-1-key-2",
+        key3: "row-1-key-3",
+      },
+      {
+        key1: "row-2-key-1",
+        key2: "row-2-key-2",
+        key3: "row-2-key-3",
+      },
+      {
+        key1: "row-3-key-1",
+        key2: "row-3-key-2",
+        key3: "row-3-key-3",
+      },
+      {
+        key1: "row-4-key-1",
+        key2: "row-4-key-2",
+        key3: "row-4-key-3",
+      },
+      {
+        key1: "row-5-key-1",
+        key2: "row-5-key-2",
+        key3: "row-5-key-3",
+      },
+      {
+        key1: "row-6-key-1",
+        key2: "row-6-key-2",
+        key3: "row-6-key-3",
+      },
+    ];
+    tbl = new htmlTable(columns);
+    tbl.values = values;
+  });
+  test("should be able to get the first row with an element for each key", () => {
+    expect(tbl.getRow(0).childNodes.length).toBe(Object.keys(values[0]).length);
+  });
+  test("should be able to have all the correct values in the first row", () => {
+    tbl.getRow(0).childNodes.forEach((v, i) => {
+      expect(v.innerHTML).toBe(values[0][Object.keys(values[0])[i]]);
+    });
+  });
+});

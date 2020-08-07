@@ -5,6 +5,7 @@
 class HTMLTable {
   id = "table"; // should be the html id of the table
   columns = []; // will be an array of objects {key, label}
+  tableContainer = document.createElement("table");
   headerElement = document.createElement("th");
   rowElement = document.createElement("tr");
   itemElement = document.createElement("td");
@@ -48,6 +49,24 @@ class HTMLTable {
       });
     }
     return row;
+  }
+  /**
+   *
+   * @param {HTMLElement} el where the Table should be inserted
+   * if el is null; it returns the table element; otherwise the element with table inserted.
+   */
+  insertFullTable(el) {
+    const tbl = this.tableContainer.cloneNode(false);
+    tbl.append(this.getHeaders());
+    this.values.forEach((r, i) => {
+      tbl.append(this.getRow(i));
+    });
+    if (el) {
+      el.append(tbl);
+      return el;
+    } else {
+      return tbl;
+    }
   }
 }
 module.exports = HTMLTable;

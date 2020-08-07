@@ -9,10 +9,16 @@
     <script src="./utility/setvalue.js"></script>
     <script src="./sample_data/attendance.js"></script>
     <script src="./sample_data/students.js"></script>
+    <script src="./utility/managetable.js"></script>
     <script>
         window.onload = () => {
             const user = sample_students[0]
             setTextFromId('title-text', `Mark ${user.first}'s Attendance`);
+            const attendanceData = sampleAttendance[user.email];
+            const attendanceTable = new HTMLTable(["Date", "StartTime", "MarkedPresent", "Present"]);
+            attendanceTable.values = attendanceData;
+            const tableArea = document.getElementById("att-section");
+            attendanceTable.insertFullTable(tableArea);
         }
     </script>
 </head>
@@ -26,9 +32,7 @@
         <a class="menu-item" id="login-menu" href="/login">Login</a>
         <a class="menu-item" id="class-menu" href=/class">Past Classes</a>
     </div>
-<table class="attendance-table">
-
-</table>
+<div id="att-section" class="att"></div>
 
 </body>
 

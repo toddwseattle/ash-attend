@@ -1,55 +1,57 @@
 :root {
-    --layout-bg:rgb(192, 155, 116);
-    --layout-text: rgb(197,103,40);
-    --content-bg:rgb(170,195,236);
-    --content-text:rgb(197,103,40);
-    --action-bg: red;
-    --action-text:white;
+  --layout-bg: rgb(192, 155, 116);
+  --layout-text: rgb(197, 103, 40);
+  --content-bg: rgb(170, 195, 236);
+  --content-text: rgb(197, 103, 40);
+  --action-bg: red;
+  --action-text: white;
 }
 html {
-    font: 1em sans-serif;
+  font: 1em sans-serif;
 }
 .title-box {
-    background-color:var(--layout-bg);
-    color: var(--layout-text);
-    margin:0%
-    padding:0%
-
+  background-color: var(--layout-bg);
+  color: var(--layout-text);
+  margin: 0%;
+  padding: 0%;
 }
 
 .menu {
-    background-color:var(--layout-bg);
-    color: var(--layout-text);
+  background-color: var(--layout-bg);
+  color: var(--layout-text);
 }
 .menu-item {
-    background-color: var(--content-bg);
-    color: var(--content-text);
-    padding: 5px 6px;
-    text-align: center;
-    display: inline-block;
-    border-width: 3px 4px 3px 4px;
-    margin: 3px 4px;
-    font-size: 1em;
-    width: 7em;
+  background-color: var(--content-bg);
+  color: var(--content-text);
+  padding: 5px 6px;
+  text-align: center;
+  display: inline-block;
+  border-width: 3px 4px 3px 4px;
+  margin: 3px 4px;
+  font-size: 1em;
+  width: 7em;
 }
 .login-box {
-    background-color: var(--content-bg);
-    color: var(--content-text);
-    width: 80%;
-    border:5px solid rgb(192, 155, 116);
-    margin: 0%;
-    padding: 0%
+  background-color: var(--content-bg);
+  color: var(--content-text);
+  width: 80%;
+  border: 5px solid rgb(192, 155, 116);
+  margin: 0%;
+  padding: 0%;
 }
 .login-box button {
-    background-color: red;
-    color: white;
-    padding:5px 6px;
-    text-align: center;
-    display: inline-block;
-    font-size: 1em;
-    width:  7em;
+  background-color: red;
+  color: white;
+  padding: 5px 6px;
+  text-align: center;
+  display: inline-block;
+  font-size: 1em;
+  width: 7em;
 }
 .login-box input {
-    width: 30%;
-    padding: 5px 6px
+  width: 30%;
+  padding: 5px 6px;
+}
+.att table td th {
+  width: auto;
 }

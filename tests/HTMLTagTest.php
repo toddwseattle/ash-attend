@@ -21,4 +21,9 @@ class HTMLTagTest extends TestCase {
         $this->assertEquals($singleClass->getHTML(),
         "<P id=\"cl0\" class=\"css1\">A single class</P>");
     }
+    public function testMultiCssClassWorks() {
+        $multiClass = new HTMLTag("P","multi-class","cl1",["css1","css2","css3"]);
+        $this->assertEquals($singleClass->getHTML(),
+        "<P id=\"cl1\" class=\"css1 css2 css3\">multi-class</P>");
+    }
 }

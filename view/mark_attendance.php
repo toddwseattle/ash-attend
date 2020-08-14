@@ -15,7 +15,7 @@ echo <<<__WINLOAD
 <script>
 window.onload = () => {
     const user = sample_students[0]
-    setTextFromId('title-text', `Mark ${user.first}'s Attendance`);
+    setTextFromId('title-text', `Mark Attendance`);
     const attendanceData = sampleAttendance[user.email];
     const attendanceTable = new HTMLTable(["Date", "StartTime", "MarkedPresent", "Present"]);
     attendanceTable.values = attendanceData;
@@ -33,8 +33,8 @@ echo <<<__PAGE
 <h1 id="title-text">Mark Attendance</h1>
 </div>
 <div class="menu" id="menu">
-<a class="menu-item" id="login-menu" href="/login">Login</a>
-<a class="menu-item" id="class-menu" href=/class">Past Classes</a>
+<a class="menu-item" id="login-menu" href="../login/login.php">Login</a>
+<a class="menu-item" id="class-menu" href=past_class.php">Past Classes</a>
 </div>
 <div id="att-section" class="att"></div>
 

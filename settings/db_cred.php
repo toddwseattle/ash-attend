@@ -3,5 +3,5 @@
 define("DATABASE", "webtechattendance");
 define("SERVER", "localhost");
 define("USERNAME", "root");
-define("PASSWD", "");
+define("PASSWD", getenv("MYSQL_ROOT") ?? "");
 ?>

@@ -1,6 +1,6 @@
 <?php
 use PHPUNIT\Framework\TestCase;
-include_once "../view/utility/snippet.php";
+include_once "Snippet.php";
 
 class SnippetTest extends TestCase {
     public function testPhpUnitLoads() {

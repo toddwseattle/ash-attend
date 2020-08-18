@@ -1,5 +1,6 @@
 <?php
 include_once "header.php";
+include_once "AttendanceMenu.php";
 $attend_scripts = [
     "utility/setvalue.js",
     "sample_data/attendance.js",
@@ -15,7 +16,7 @@ echo <<<__WINLOAD
 <script>
 window.onload = () => {
     const user = sample_students[0]
-    setTextFromId('title-text', `Mark ${user.first}'s Attendance`);
+    setTextFromId('title-text', `Mark \${user.first}'s Attendance`);
     const attendanceData = sampleAttendance[user.email];
     const attendanceTable = new HTMLTable(["Date", "StartTime", "MarkedPresent", "Present"]);
     attendanceTable.values = attendanceData;
@@ -24,7 +25,8 @@ window.onload = () => {
 }
 </script>
 __WINLOAD;
-echo <<<__PAGE
+echo ShowAttendanceMenu("Record");
+echo <<<__TITLE
 
 
 <body>
@@ -32,14 +34,13 @@ echo <<<__PAGE
 <div id="title" class="title-box">
 <h1 id="title-text">Mark Attendance</h1>
 </div>
-<div class="menu" id="menu">
-<a class="menu-item" id="login-menu" href="/login">Login</a>
-<a class="menu-item" id="class-menu" href=/class">Past Classes</a>
-</div>
-<div id="att-section" class="att"></div>
+__TITLE;
 
+echo <<<_ATTENDANCE
+<div id="att-section" class="att"></div>
 </body>
 
 </html>
+_ATTENDANCE;
 
-__PAGE;
+

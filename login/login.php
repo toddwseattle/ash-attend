@@ -6,7 +6,7 @@ echo <<<__LOGIN
     <div id="title" class="title-box">
         <h1 id="title-text">Ashesi Web Development Attendance Login</h1>
     </div>
-    <form id="loginForm" class="login-box">
+    <form id="loginForm" class="form-box">
         <label for "email">Enter your Email</label>
         <input type="text" id="email" name="email" placeholder="your email@ashesi">
         <button id="loginSubmit" type="submit" value="Submit">Submit</button>

@@ -1,6 +1,6 @@
 <?php
 use PHPUNIT\Framework\TestCase;
-include_once "../view/utility/snippet.php";
+include_once "HTMLTag.php";
 class HTMLTagTest extends TestCase {
     public function testHTMLTagClassDefaultConstructorWorks() {
         $tag = new HTMLTag();
@@ -9,7 +9,7 @@ class HTMLTagTest extends TestCase {
 
     }
     public function testIdAutoIncrementWorks() {
-        $id0 = new HTMLTag();
+        $id0 = new HTMLTag(); 
         $id0->content = "Test1";
         $id1 = new HTMLTag();
         $id1->content = "Test2";
@@ -23,7 +23,17 @@ class HTMLTagTest extends TestCase {
     }
     public function testMultiCssClassWorks() {
         $multiClass = new HTMLTag("P","multi-class","cl1",["css1","css2","css3"]);
-        $this->assertEquals($singleClass->getHTML(),
+        $this->assertEquals($multiClass->getHTML(),
         "<P id=\"cl1\" class=\"css1 css2 css3\">multi-class</P>");
+    }
+    public function testAddCssClassWorks() {
+        $singleClass = new HTMLTag("P","A single class","cl0",["css1"]);
+        $singleClass->addCssClass("css2");
+        $this->assertEquals($singleClass->getCssClassString(),"css1 css2");
+    }
+    public function testRemoveCssClassWorks() {
+        $testTag = new HTMLTag("P","A single class","cl0",["css1","css2"]);
+        $testTag->removeCssClass("css2");
+        $this->assertEquals($testTag->getCssClassString(),"css1");
     }
 }

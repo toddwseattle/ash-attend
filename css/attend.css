@@ -5,6 +5,7 @@
   --content-text: rgb(197, 103, 40);
   --action-bg: red;
   --action-text: white;
+  --error-text: yellow;
 }
 html {
   font: 1em sans-serif;
@@ -31,7 +32,18 @@ html {
   font-size: 1em;
   width: 7em;
 }
-.login-box {
+.menu-item.active-menu {
+  background-color: var(--action-bg);
+  color: var(--action-text);
+  padding: 5px 6px;
+  text-align: center;
+  display: inline-block;
+  border-width: 3px 4px 3px 4px;
+  margin: 3px 4px;
+  font-size: 1em;
+  width: 7em;
+}
+.form-box {
   background-color: var(--content-bg);
   color: var(--content-text);
   width: 80%;
@@ -39,7 +51,7 @@ html {
   margin: 0%;
   padding: 0%;
 }
-.login-box button {
+.form-box button {
   background-color: red;
   color: white;
   padding: 5px 6px;
@@ -48,9 +60,23 @@ html {
   font-size: 1em;
   width: 7em;
 }
-.login-box input {
+.form-box input {
   width: 30%;
   padding: 5px 6px;
+}
+.form-box .error-msg {
+  margin: 0%;
+  padding: 0%;
+  border: 1px solid var(--error-text);
+  background-color: var(--action-bg);
+  color: var(--error-text);
+}
+.form-box .info-msg {
+  color: var(--layout-text);
+  margin: 0%;
+  padding: 0%;
+  border: 1px solid var(--content-text);
+  background-color: var(--content-bg);
 }
 .att table td th {
   width: auto;

@@ -63,6 +63,35 @@ html {
 .form-box input {
   width: 30%;
   padding: 5px 6px;
+  margin: 1%;
+}
+.form-box label {
+  width: 10%;
+  font-weight: bold;
+  padding: 5px 6px;
+  margin: 1%;
+}
+.form-box .radio-box {
+  background-color: var(--content-bg);
+  color: var(--content-text);
+  width: 25%;
+  border: 2px solid rgb(192, 155, 116);
+  margin: 1%;
+  padding: 0%;
+}
+.form-box .radio-box p {
+  color: var(--content-text);
+  font-weight: bold;
+  width: 100%;
+  margin: 1%;
+  padding: 0%;
+}
+.form-box .radio-box input {
+  width: 10%;
+}
+.form-box .radio-box input + label {
+  width: 30%;
+  font-weight: normal;
 }
 .form-box .error-msg {
   margin: 0%;

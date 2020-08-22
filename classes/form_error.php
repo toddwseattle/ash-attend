@@ -1,5 +1,5 @@
 <?php
-class FormError
+class form_error
 {
   public string $message;
   public string $fieldName;
@@ -9,5 +9,9 @@ class FormError
     $this->message = $message;
     $this->fieldName = $fieldName;
     $this->status = $status;
+  }
+  public function is_ok()
+  {
+    return $this->status === 0;
   }
 }

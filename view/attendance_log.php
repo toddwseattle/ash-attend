@@ -1,17 +1,18 @@
 <?php
+include_once "../settings/core.php";
 include_once "header.php";
-include_once "AttendanceMenu.php";
+include_once "attendance_menu.php";
 $attend_scripts = [
-    "utility/setvalue.js",
-    "sample_data/attendance.js",
-    "sample_data/students.js",
-    "utility/managetable.js"
+  "utility/setvalue.js",
+  "sample_data/attendance.js",
+  "sample_data/students.js",
+  "utility/managetable.js",
 ];
 $prefix = "../js/src/";
 foreach ($attend_scripts as &$toPrefix) {
-    $toPrefix = $prefix . $toPrefix;
+  $toPrefix = $prefix . $toPrefix;
 }
-echoHeader("Attendance History",$attend_scripts);
+echoHeader("Attendance History", $attend_scripts);
 echo <<<__WINLOAD
 <script>
 window.onload = () => {
@@ -25,9 +26,10 @@ window.onload = () => {
 }
 </script>
 __WINLOAD;
-echo ShowAttendanceMenu("Record");
+$menu = create_attendance_menu("Record", ROOT_PREFIX);
+echo $menu->get_html();
 echo <<<__TITLE
-
+<h1 id="title-text">Record</h1>
 
 <body>
 
@@ -42,5 +44,3 @@ echo <<<_ATTENDANCE
 
 </html>
 _ATTENDANCE;
-
-

@@ -103,7 +103,12 @@ class user_classTest extends TestCase
   public function testUser_From_Form_Err_On_Bad_Email()
   {
     $tu = new user_class();
-    $result = $tu->createFromForm("Todd", "Warren", "twarren_ashesi.edu.gh","Male");
+    $result = $tu->createFromForm(
+      "Todd",
+      "Warren",
+      "twarren_ashesi.edu.gh",
+      "Male"
+    );
     $actual = $result[0]->fieldName;
     $this->assertEquals("email", $actual);
   }
@@ -112,6 +117,7 @@ class user_classTest extends TestCase
     $ses_array = [
       "user_first" => "First",
       "user_last" => "Last",
+
       "user_email" => "",
       "twarren@ashesi.edu.gh",
       "user_gender" => "Male",

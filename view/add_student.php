@@ -1,21 +1,22 @@
 
 <?php
-include_once "../view/header.php";
-include_once "../view/AttendanceMenu.php";
-include_once "../view/utility/HTMLTag.php";
+include_once "../settings/core.php";
+include_once "header.php";
+include_once "attendance_menu.php";
+include_once "utility/html_tag_class.php";
 include_once "../classes/user_class.php";
-$prefix = "../js/src/";
-$curUser = new User();
-$curUser->from_session();
-foreach ($attend_scripts as &$toPrefix) {
-  $toPrefix = $prefix . $toPrefix;
+if (isset($_SESSION) and isset($_SESSION["user_id"])) {
+  $curUser = user_class::create_from_session($_SESSION);
+} else {
+  $curUser = new user_class("Test", "User", "test@user.com", "Male", 1);
 }
 echoHeader("Add Student");
 
 echo <<<__BODY_START
 <body>
 __BODY_START;
-echo ShowAttendanceMenu("Add Student");
+$attendance_menu = create_attendance_menu("Add Student", ROOT_PREFIX);
+echo $attendance_menu->get_html();
 echo <<<__TITLE
 <div id="title" class="title-box">
         <h1 id="title-text">Add Student</h1>
@@ -61,16 +62,16 @@ __ADDFORM;
 foreach ($messages as $index => $message) {
   switch ($message->status) {
     case 0:
-      $msgText = new HTMLTag("div", $message->message, "msg" . $index, [
+      $msgText = new html_tag_class("div", $message->message, "msg" . $index, [
         "info-msg",
       ]);
-      echo $msgText->getHTML();
+      echo $msgText->get_html();
       break;
     case 1:
-      $msgText = new HTMLTag("div", $message->message, "msg" . $index, [
+      $msgText = new html_tag_class("div", $message->message, "msg" . $index, [
         "error-msg",
       ]);
-      echo $msgText->getHTML();
+      echo $msgText->get_html();
       break;
     default:
       # code...

@@ -21,6 +21,7 @@ html {
   background-color: var(--layout-bg);
   color: var(--layout-text);
 }
+
 .menu-item {
   background-color: var(--content-bg);
   color: var(--content-text);

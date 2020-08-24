@@ -7,6 +7,7 @@ class user_class
   public string $lname;
   public string $email;
   public string $gender;
+  public string $id;
   /**3=student ser role: 1 faculty, 2 faculty intern and 3 student */
   public int $role = 3;
   /**1=active 2=inactive */
@@ -38,6 +39,7 @@ class user_class
       $session["user_email"],
       $session["user_gender"]
     );
+    $from_session->$session["user_id"];
     $from_session->role = $session["user_role"];
     return $from_session;
   }

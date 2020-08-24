@@ -1,6 +1,9 @@
 
-<?php function echoHeader($title = "Ashesi Class Attendance", $scripts = [])
-{
+<?php function echoHeader(
+  $title = "Ashesi Class Attendance",
+  $scripts = [],
+  $url_prefix = ROOT_PREFIX
+) {
   echo <<<__HEAD
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1024, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/attend.css">
+    <link rel="stylesheet" href="$url_prefix/css/attend.css">
 __HEAD;
   echo "\n<title>" . $title . "</title>\n";
   foreach ($scripts as $s) {

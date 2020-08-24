@@ -51,6 +51,23 @@ html {
   border: 5px solid rgb(192, 155, 116);
   margin: 0%;
   padding: 0%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+}
+.form-box .field-group {
+  flex: auto;
+  margin: 2%;
+}
+.form-box .field-group input {
+  padding: 5px 6px;
+  width: 70%;
+  margin: 1%;
+}
+.form-box .field-group label {
+  font-weight: bold;
+  padding: 5px 6px;
+  margin: 1%;
 }
 .form-box button {
   background-color: red;

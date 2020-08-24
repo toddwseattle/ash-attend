@@ -44,20 +44,26 @@ if (
 
 echo <<<__ADDFORM
 <form id="addForm" class="form-box" method="post">
+    <div class="field-group">
         <label for="first">First</label>
         <input type="text" id="first" name="fname" value="$add_student->fname" placeholder="First Name">
+    </div>
+    <div class="field-group">
         <label for="last">Last</label>
         <input type="text" id="last" name="lname"value="$add_student->lname" placeholder="Last Name">
+    </div>
+    <div class="field-group">
         <label for "email">Email</label>
         <input type="email" id="email" name="email" value="$add_student->email" placeholder="studentname@ahesi.edu.gh">
-        <div class="radio-box">
+    </div>
+      <div class="radio-box">
         <p>Gender</p>
         <input type="radio" id="male" name="gender" value="male">
         <label for="male">Male</label><br>
         <input type="radio" id="female" name="gender" value="female">
         <label for="female">Female</label><br>
-         </div>
-        <button id="addStudentSubmit" type="submit" value="Submit" >Submit</button>
+      </div>
+      <button id="addStudentSubmit" type="submit" value="Submit" >Submit</button>
 __ADDFORM;
 foreach ($messages as $index => $message) {
   switch ($message->status) {

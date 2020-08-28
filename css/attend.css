@@ -128,3 +128,46 @@ html {
 .att table td th {
   width: auto;
 }
+.hero-box-container {
+  background-color: var(--content-bg);
+  color: var(--content-text);
+  width: 100%;
+  border: 10px solid rgb(192, 155, 116);
+  margin: 0%;
+  padding: 0%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.hero-box-container .box {
+  flex: 30%;
+  margin: 0.5rem;
+  padding: 0.25rem;
+  background-color: var(--layout-bg);
+  color: var(--layout-text);
+}
+.hero-box-container .box h2 {
+  color: var(--action-bg);
+}
+.action-container {
+  background-color: var(--content-bg);
+  color: var(--content-text);
+  width: 100%;
+  border: 5px var(--content-bg);
+  margin: 0%;
+  padding: 1%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.action-button {
+  background-color: red;
+  border: 5px solid yellow;
+  text-decoration: none;
+  color: white;
+  padding: 5px 6px;
+  text-align: center;
+  display: inline-block;
+  font-size: 2em;
+  width: 7em;
+}

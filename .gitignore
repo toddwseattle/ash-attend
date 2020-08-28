@@ -2,3 +2,4 @@
 .vscode
 myphp.ini
 phpunit
+.phpunit*

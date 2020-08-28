@@ -1,31 +1,34 @@
-<?php
-include_once "./settings/core.php";
-include_once "./view/header.php";
-include_once "./view/attendance_menu.php";
-$title = "Ashesi Web Development Attendance";
-echoHeader($title);
-echo <<<__BODY_START
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/attend.css">
+  <title>Ashesi Attendance</title>
+</head>
 <body>
-__BODY_START;
+<div id="title" class="title-box">
+  <h1>
+    Ashesi Attendance System
+  </h1>
+  <p>Welcome to the Ashesi Attendance system.  This system is designed for use by Ashesi Students in Web Development 2020</p>
 
-$attendance_menu = create_attendance_menu("Home", ROOT_PREFIX);
-echo $attendance_menu->get_html();
-echo <<<__TITLE
-<div class="title-box">
-    <h1>$title</h1>
 </div>
-__TITLE;
-$name = $_SERVER["SERVER_NAME"];
-echo <<<__DIAG
-<h1>server: $name</h1>
-<h2>Current File: $current_file</h2>
-
-<h2>Server Vars</h2>
-<ul>
-__DIAG;
-foreach ($_SERVER as $key => $value) {
-  echo "<li> \$_SERVER[" . $key . "]=" . $value;
-}
-echo "</ul>";
-
-?>
+<div class="hero-box-container" id="hero-support">
+  <div class="box" id="student-hero">
+    <h2>Students</h2>
+    <p>Students can mark there attendance for a class and see their past attendance</p>
+  </div>
+  <div class="box" id="faculty-hero">
+    <h2>Faculty</h2>
+    <p>Faculty can schedule classes and review attendance of their students</p>
+  </div>
+  <div class="box" id="fi-hero">
+    <h2>Faculty Interns</h2>
+    <p>Faculty Interns can review attendance of students, and correct errors after the class date has passed</p>
+  </div>
+</div>
+<div class="action-container" id="action-button">
+  <a href="view/dashboard.php" class="action-button" id="get-started">Get Started</a></div>
+</body>
+</html>

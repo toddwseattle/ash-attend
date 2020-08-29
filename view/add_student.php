@@ -16,7 +16,7 @@ echoHeader("Add Student");
 echo <<<__BODY_START
 <body>
 __BODY_START;
-$attendance_menu = create_attendance_menu("Add Student", ROOT_PREFIX);
+$attendance_menu = create_attendance_menu("Add Student");
 echo $attendance_menu->get_html();
 echo <<<__TITLE
 <div id="title" class="title-box">

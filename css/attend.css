@@ -24,6 +24,7 @@ html {
 
 .menu-item {
   background-color: var(--content-bg);
+  text-decoration: none;
   color: var(--content-text);
   padding: 5px 6px;
   text-align: center;

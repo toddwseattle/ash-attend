@@ -12,7 +12,7 @@ echoHeader("Attendance Login");
         <input type="text" id="email" name="u_mail" placeholder="your email@ashesi">
         <label for="password">Password</label>
         <input type="password" id="password" name="u_pass">
-        <button id="loginSubmit" type="submit" value="Submit">Submit</button>
+        <button id="loginSubmit" name="u_login" type="submit" >Login</button>
     </form>
 </body>
 

@@ -22,7 +22,7 @@ class db_connection
   {
     //connection
     $this->db = mysqli_connect(SERVER, USERNAME, PASSWD, DATABASE);
-
+    //  echo "<h1> error mysql:" . mysqli_connect_error() . "</h1>";
     //test the connection
     if (mysqli_connect_errno()) {
       return false;

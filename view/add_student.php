@@ -3,8 +3,9 @@
 include_once "../settings/core.php";
 include_once "header.php";
 include_once "attendance_menu.php";
-include_once "utility/html_tag_class.php";
+include_once "../utility/html_tag_class.php";
 include_once "../classes/user_class.php";
+include_once "../actions/add_student_action.php";
 if (isset($_SESSION) and isset($_SESSION["user_id"])) {
   $curUser = user_class::create_from_session($_SESSION);
 } else {
@@ -38,7 +39,15 @@ if (
     filter_var($_POST['gender'], FILTER_SANITIZE_STRING)
   );
   if (count($messages) == 1 and $messages[0]->is_ok()) {
-    echo "<p>This is where it would be submitted:</p>";
+    if (add_student_action($add_student)) {
+      $messages[0] = new form_error($add_student->getFullName() . " Added");
+    } else {
+      $messages[0] = new form_error(
+        'failed to add ' . $add_student->getFullName(),
+        "",
+        1
+      );
+    }
   }
 }
 
@@ -58,9 +67,9 @@ echo <<<__ADDFORM
     </div>
       <div class="radio-box">
         <p>Gender</p>
-        <input type="radio" id="male" name="gender" value="male">
+        <input type="radio" id="male" name="gender" value="Male">
         <label for="male">Male</label><br>
-        <input type="radio" id="female" name="gender" value="female">
+        <input type="radio" id="female" name="gender" value="Female">
         <label for="female">Female</label><br>
       </div>
       <button id="addStudentSubmit" type="submit" value="Submit" >Submit</button>

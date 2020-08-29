@@ -26,7 +26,7 @@ window.onload = () => {
 }
 </script>
 __WINLOAD;
-$menu = create_attendance_menu("Record", ROOT_PREFIX);
+$menu = create_attendance_menu("Record");
 echo $menu->get_html();
 echo <<<__TITLE
 <h1 id="title-text">Record</h1>

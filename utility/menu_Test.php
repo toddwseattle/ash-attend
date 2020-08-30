@@ -30,6 +30,14 @@ class menu_test extends TestCase
     }
     return new menu_class($items);
   }
+  public function createAMenuWithItemsWithRole($numItems = 3, $role = 3)
+  {
+    $newMenu = $this->createAMenuWithItems($numItems);
+    foreach ($newMenu->items as $mi) {
+      $mi->min_role = $role;
+    }
+    return $newMenu;
+  }
   public function test_creates_a_menu_with_3_items()
   {
     $menu = $this->createAMenuWithItems(3);
@@ -60,18 +68,22 @@ class menu_test extends TestCase
   {
     $testMenu = $this->createAMenuWithItems(3);
     $activeMI = $testMenu->items[0];
+    $testMenu->setActiveMenu($activeMI->description);
     $boolExp = $testMenu->items[0]->active;
-    echo "\nMenu " .
-      $testMenu->items[0]->description .
-      "is active? " .
-      $boolExp;
     $newActiveMI = $testMenu->items[1];
     $testMenu->setActiveMenu($newActiveMI->description);
-    echo "\nmenu " .
-      $testMenu->items[0]->description .
-      " should be inactive? " .
-      $testMenu->items[0]->active;
+    $testMenu->items[0]->active;
     $boolExp = ($boolExp and !$testMenu->items[0]->active);
     $this->assertTrue($boolExp, "Activated/Deactivate Works");
+  }
+  public function test_can_hide_all_menus_base_on_min_role()
+  {
+    $menu = $this->createAMenuWithItemsWithRole(3, 1);
+    // all menus are faculty level
+    $menu->current_role = 3;
+    $emptyMenu = $menu->get_html();
+    $actual = $menu->container_snippet->content;
+    $expected = "";
+    $actual = $this->assertEquals($expected, $actual);
   }
 }

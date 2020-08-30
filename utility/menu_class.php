@@ -6,6 +6,7 @@ class menu_class implements i_snippet
 {
   public snippet_class $container_snippet;
   public array $items = [];
+  public $current_role = 3;
 
   /**
    * set of css classes for active menu items
@@ -34,12 +35,14 @@ class menu_class implements i_snippet
   {
     $menuItemsHTML = "";
     foreach ($this->items as $menu_item) {
-      if (!$menu_item->enabled) {
-        $menu_item->addCssClass($this->disabledCssClasses);
-      }
-      $menuItemsHTML .= $menu_item->get_html() . "\n";
-      if (!$menu_item->enabled) {
-        $menuItemsHTML->removeCssClass($this->disabledCssClasses);
+      if ($menu_item->is_visible_for_role($this->current_role)) {
+        if (!$menu_item->enabled) {
+          $menu_item->addCssClass($this->disabledCssClasses);
+        }
+        $menuItemsHTML .= $menu_item->get_html() . "\n";
+        if (!$menu_item->enabled) {
+          $menuItemsHTML->removeCssClass($this->disabledCssClasses);
+        }
       }
     }
     $this->container_snippet->content = $menuItemsHTML;

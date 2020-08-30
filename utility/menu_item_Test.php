@@ -46,4 +46,23 @@ class menu_item_test extends TestCase
 _EXPECT;
     $this->assertEquals($expected, $actual);
   }
+  public function test_it_should_default_min_role_to_3()
+  {
+    $actual = (new menu_item_class())->min_role;
+    $this->assertEquals(3, $actual);
+  }
+  public function test_it_should_create_a_min_role_of_1()
+  {
+    $actual = (new menu_item_class("Admin", "#", "Only Admin", 1))->min_role;
+    $this->assertEquals(1, $actual);
+  }
+  public function test_it_should_not_let_a_role_of_3_access_min_role_of_1()
+  {
+    $actual = new menu_item_class("Admin", "#", "Only Admin", 1);
+    $false_message = $actual->is_visible_for_role(3);
+    $this->assertFalse(
+      $false_message,
+      "_it_should_not_let_a_role_of_3_access_min_role_of_1"
+    );
+  }
 }

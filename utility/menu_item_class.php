@@ -3,14 +3,17 @@ include_once "snippet_class.php";
 include_once "html_tag_class.php";
 include_once "link_tag_class.php";
 /**
- * A menu_item_class  pass $description, $link, $help and $id to the constructor.  by default
+ * A menu_item_class  pass $description, $link, $help, $id, and $role to the constructor.  by default
  * produces href="$link" id="$id" $descriptions .  $help is not yet used.
+ * $role defaults to 3 (student) used by check role
  */
 class menu_item_class implements i_snippet
 {
   public $description;
   public $help;
   public $link;
+  public $min_role; // the minimum role for the user to have to see the menu; usually a number
+
   public bool $enabled = true;
   public bool $active = false;
   public ?link_tag_class $tag;
@@ -18,6 +21,7 @@ class menu_item_class implements i_snippet
     $description = "Blank",
     $link = "#",
     $help = null,
+    $min_role = 3,
     $id = null
   ) {
     $this->description = $description;
@@ -31,6 +35,11 @@ class menu_item_class implements i_snippet
     }
     $this->tag = new link_tag_class($link, $description, $id);
     $this->tag->addCssClass('menu-item');
+    $this->min_role = $min_role;
+  }
+  function is_visible_for_role($role)
+  {
+    return $this->min_role >= $role;
   }
   function get_html()
   {

@@ -20,7 +20,7 @@ This passes a student id, and retrieves all the classes that they have marks for
 
 Current format proposes a denormalized structure.
 
-### get_closest_class (GET)(./get_closest_class.json)
+### [get_closest_class (GET)](./get_closest_class.json)
 
 This passes a date (What format?) and then it returns the class id closest in time to date. It will be used in the "mark current attendance" It should be any class within 24 hours prior of the requested date.
 
@@ -30,8 +30,10 @@ this returns the entire attend_class table from the database
 
 ### [get_marks_by_class (GET)](./get_marks_by_class.json)
 
-Retrieve all marks for a given class, including denormalized student name and id.
+Retrieve all marks for a given class, including de-normalized student name and id.
 
 ### add_classes (POST)
 
 an admin function to add classes to attend_class table
+
+### [login_action (POST)](./logon_action.json)

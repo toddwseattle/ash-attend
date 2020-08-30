@@ -1,4 +1,4 @@
 {
   "request": { "email": "twarren@ashesi.edu.gh" },
-  "response": { "data": "success" | "pending" | "inactive" }
+  "response": { "data": "success" | "pending" | "inactive" | "failed" }
 }

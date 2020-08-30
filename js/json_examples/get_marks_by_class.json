@@ -1,0 +1,29 @@
+{
+  "request": { "class_id": 1 },
+  "response": {
+    "class_id": id,
+    "class_name": "tuesday Class",
+    "class_date": "some date format",
+    "attend_status": {
+      0: "not marked",
+      1: "present",
+      2: "not present"
+    },
+    "marks": [
+      {
+        "user_id": 1,
+        "user_fname": "Todd",
+        "user_lname": "Warren",
+        "user_email": "twarren@ahsesi.edu.gh",
+        "mark_status": 1
+      },
+      {
+        "user_id": 1,
+        "user_fname": "David",
+        "user_lname": "Sampah",
+        "user_email": "dsampah@ahsesi.edu.gh",
+        "mark_status": 1
+      }
+    ]
+  }
+}

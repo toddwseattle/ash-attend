@@ -1,0 +1,40 @@
+{
+  "request": {
+    "user_id": "1"
+  },
+  "response": {
+    "student": {
+      "f_name": "Todd",
+      "l_name": "Warren",
+      "email": "twarren@ashesi.edu.gh"
+    },
+    "attend_status": {
+      0: "not marked",
+      1: "present",
+      2: "not present"
+    },
+    "marks": [
+      {
+        "class_id": 1,
+        "class_name": "Tuesday Class",
+        "class_date": "some date format",
+        "mark_student_id": 1,
+        "mark_status": 1
+      },
+      {
+        "class_id": 1,
+        "class_name": "Thursday Class",
+        "class_date": "some date format",
+        "mark_student_id": 1,
+        "mark_status": 1
+      },
+      {
+        "class_id": 1,
+        "class_name": "Firday Lab",
+        "class_date": "some date format",
+        "mark_student_id": 1,
+        "mark_status": 1
+      }
+    ]
+  }
+}

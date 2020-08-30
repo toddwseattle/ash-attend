@@ -1,0 +1,11 @@
+{
+  "post": {
+    "f_name": "Todd",
+    "l_name": "Warren",
+    "email": "todd@warrenfamily.org",
+    "gender": "Male"
+  },
+  "response": {
+    "data": "success | duplicate | failed"
+  }
+}

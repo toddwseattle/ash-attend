@@ -1,0 +1,10 @@
+{
+  "request": {
+    "date": "a date in some format"
+  },
+  "response": {
+    "class_id": "1",
+    "class_name": "WebTech Class",
+    "class_date": "a date in some format"
+  }
+}

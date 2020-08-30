@@ -24,6 +24,7 @@
   "homepage": "https://github.com/toddwseattle/ash-attend#readme",
   "devDependencies": {
     "@prettier/plugin-php": "^0.14.3",
+    "@types/jquery": "^3.5.1",
     "http-server": "^0.12.3",
     "jest": "^26.2.2",
     "prettier": "^2.0.5"

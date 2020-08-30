@@ -16,7 +16,6 @@ html {
   margin: 0%;
   padding: 0%;
 }
-
 .menu {
   background-color: var(--layout-bg);
   color: var(--layout-text);
@@ -53,31 +52,41 @@ html {
   margin: 0%;
   padding: 0%;
   display: flex;
-  flex-wrap: wrap;
+  flex-flow: column wrap;
   justify-content: left;
 }
 .form-box .field-group {
-  flex: auto;
+  flex: 1;
+  display: flex;
+  flex-flow: row wrap;
   margin: 2%;
 }
+
 .form-box .field-group input {
   padding: 5px 6px;
-  width: 70%;
+  flex: 5 2;
+  /* width: 30em; */
   margin: 1%;
 }
 .form-box .field-group label {
   font-weight: bold;
+  flex: 3 1;
   padding: 5px 6px;
   margin: 1%;
 }
 .form-box button {
   background-color: red;
+  flex: 3 1;
+  align-self: center;
+  width: 10rem;
   color: white;
   padding: 5px 6px;
   text-align: center;
   display: inline-block;
   font-size: 1em;
-  width: 7em;
+}
+.form-box button:disabled {
+  background-color: gray;
 }
 .form-box input {
   width: 30%;
@@ -90,10 +99,15 @@ html {
   padding: 5px 6px;
   margin: 1%;
 }
+.form-box .hidden {
+  visibility: hidden;
+}
 .form-box .radio-box {
+  align-self: center;
+  flex: 5 1;
   background-color: var(--content-bg);
   color: var(--content-text);
-  width: 25%;
+  width: 75%;
   border: 2px solid rgb(192, 155, 116);
   margin: 1%;
   padding: 0%;
@@ -113,18 +127,13 @@ html {
   font-weight: normal;
 }
 .form-box .error-msg {
-  margin: 0%;
-  padding: 0%;
   border: 1px solid var(--error-text);
-  background-color: var(--action-bg);
   color: var(--error-text);
+  background-color: var(--action-bg);
 }
 .form-box .info-msg {
   color: var(--layout-text);
-  margin: 0%;
-  padding: 0%;
-  border: 1px solid var(--content-text);
-  background-color: var(--content-bg);
+  font-size: 0.25em;
 }
 .att table td th {
   width: auto;

@@ -1,9 +1,9 @@
 {
-  "status": "ok",
-  "message": "Todd Warren was added"
+  "status": "success",
 },
 {
-  "status": "error",
-  "field": "email",
-  "message": "duplicate email address"
-})
+  "status": "duplicate",
+}),
+{
+    "status":"fail"
+}

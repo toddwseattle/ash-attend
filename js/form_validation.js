@@ -1,3 +1,4 @@
+
 /**
  * A helper class to create form errors.  these are assigned to the
  * messages property of @class FormValidation.
@@ -16,11 +17,32 @@ export class FormError {
   errorString() {
     return this.msgTemplate;
   }
-}
+} /**
+ * Creates a FormValidation Object
+  @member fields : what fields are validate
+  @member submitButton : ide of submit button or submit by default
+  @member messageContainer id of div where messages should go
+  @member messageElement a template element to create the message. 
+  @member isDirty
+  @member isValid
+  
+     
+ */
 export class FormValidation {
-  constructor(fields, submitButtonId, messageContainer, messageElement) {
+  /**
+   * 
+   * @param options 
+   * { fields:  array of fields to validate
+   *   submitButton: id of submit button or "submit" by default
+   *  messageContainer id of div where messages should go
+   * messageElement a template html element to create the message
+   * jquery jquery global.  otherwise assume $ is defined. (useful in testing
+   * )}
+   */
+  constructor({fields, submitButtonId, messageContainer, messageElement, jquery}) {
+    this.jquery = jquery ? jquery : $;
     this.fields = fields ? fields : [];
-    this.submitButton = $(submitButtonId ? submitButtonId : "submit");
+    this.submitButton = this.jquery(submitButtonId ? submitButtonId : "#submit");
     this.isDirty = false;
     this.isValid = false;
     /**
@@ -30,19 +52,21 @@ export class FormValidation {
     this.updateFromChange = this.updateFromChange.bind(this);
     this.messageContainer = messageContainer
       ? messageContainer
-      : $("#form-errors");
+      : this.jquery("#form-errors");
     this.messageElement = messageElement
       ? messageElement
-      : $('<p class="error-msg"></p>');
+      : this.jquery('<p class="error-msg"></p>');
     this.noMessageStyle = "display:none";
     this.messageStyle = "display:inline";
+    this.formValidators = [];
     this.addListenersToFields();
     this.updateDisplay();
   }
+ 
   addListenersToFields() {
     this.fields.forEach((field) => {
-      if ($(field.id).length > 0) {
-        $(field.id).on("input", this.updateFromChange);
+      if (this.jquery(field.id).length > 0) {
+        this.jquery(field.id).on("input", this.updateFromChange);
       } else {
         console.log(
           `FormValidation class: unable to attach listener to $('${field.id}') it's not here`
@@ -92,14 +116,52 @@ export class FormValidation {
       this.messages = clearedErrors;
     });
   }
+  addFormValidatorFunction(validator) {
+    if(typeof validator.func==="function") {
+    validator.message = validator.message ?validator.message : "Invalid Form";
+    this.formValidators.push(validator);
+    } else {
+      throw("not a validator function");
+    }
+  }
+  checkFormLevelErrors() {
+    let valid=true;
+    this.formValidators.forEach(fv => {
+      const fvValid = fv.func(this);
+      if(!fvValid) {
+      const fvError = new FormError({field:"form", message:fv.message});
+      this.messages.push(fvError);
+      }
+      valid= valid && fvValid;
+    });
+    return valid;
+  }
+  getFieldValue(field) {
+    let value = null;
+    switch (this.jquery(field.id).prop("type")) {
+      case "checkbox":
+        value = this.jquery(field.id).prop("checked");
+        break;
+
+      default:
+        value =
+          this.jquery(field.id).val() &&
+          this.jquery(field.id).val().length > (field.minCheck ? field.minCheck : 0)
+            ? this.jquery(field.id).val()
+            : null;
+        break;
+    }
+    return value;
+  }
   updateFromChange(event) {
     this.isDirty = true;
     let formValid = true;
     this.clearFormLevelErrors();
+    formValid = this.checkFormLevelErrors();
     this.fields.forEach((field) => {
       if (event.target.name.indexOf(field.name) >= 0) {
         field.isDirty = true;
-        if ($(field.id).val() && $(field.id).val().length > 1) {
+        if (this.getFieldValue(field) !== null) {
           field.isDirty = true;
           // remove any messages about the field that are outdated
           if (this.messages.length > 0) {
@@ -109,8 +171,8 @@ export class FormValidation {
             });
             this.messages = newMessages;
           }
-          const value = field.check($(field.id).val());
-          if (!value) {
+          const value = field.check(this.getFieldValue(field), field);
+          if (value === null) {
             this.messages.push(
               new FormError({
                 field: field.name,
@@ -124,7 +186,7 @@ export class FormValidation {
           }
         }
       }
-      formValid = formValid && field.isValid;
+      formValid = field.isDirty ? formValid && field.isValid : formValid;
     }); // end fields.forEach
     this.isValid = formValid;
     this.updateDisplay();
@@ -132,6 +194,7 @@ export class FormValidation {
   get values() {
     const retValue = {};
     this.fields.forEach((field) => {
+      if(!field.name) { console.log(`error: ${field.id} does not have a name defined`);};
       retValue[field.name] = field.value;
     });
     return retValue;

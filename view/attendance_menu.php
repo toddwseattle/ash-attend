@@ -17,9 +17,9 @@ function create_attendance_menu(string $select = "Dashboard")
       2
     ),
     new menu_item_class(
-      "Add Classes",
-      "add_classes.php",
-      "Add class sessions",
+      "Sessions",
+      "manage_sessions.php",
+      "Add, Remove, and Edit sessions",
       1
     ),
   ];

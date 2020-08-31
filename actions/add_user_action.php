@@ -1,5 +1,5 @@
 <?php
-//connnect to the controller
+//connect to the controller
 require("../controllers/user_controller.php");
 
 //check for post email
@@ -20,7 +20,7 @@ if (isset($_POST['email'])) {
 		echo "duplicate";
 	} 
 	else{
-		//hash paswrod
+		//hash password
 		//$hashed_pass = password_hash($uPass, PASSWORD_DEFAULT);
 
 		//register user

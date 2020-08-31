@@ -8,11 +8,15 @@
 </head>
 <body>
 <div id="title" class="title-box">
+<div class="img-tile">
+<img src="images/AshesiLogo_9cm.jpg" alt="">
+</div>
+<div class="title-tile">
   <h1>
     Ashesi Attendance System
   </h1>
   <p>Welcome to the Ashesi Attendance system.  This system is designed for use by Ashesi Students in Web Development 2020</p>
-
+</div>
 </div>
 <div class="hero-box-container" id="hero-support">
   <div class="box" id="student-hero">

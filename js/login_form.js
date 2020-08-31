@@ -1,4 +1,4 @@
-// file assume jquery in global scope
+// file assume jquery in global scope or passed to constructor
 import {
   FormValidation,
   checkEmailAndClean,
@@ -60,8 +60,8 @@ $(document).ready(() => {
     },
   ];
   const loginFormValidation = new FormValidation(
-    loginFormField,
-    "#loginSubmit"
+    {fields:loginFormField,
+    submitButtonId:"#loginSubmit"}
   );
 
   $("#loginForm").on("change", loginFormValidation.updateFromChange);

@@ -5,10 +5,7 @@
 class HTMLTable {
   id = "table"; // should be the html id of the table
   columns = []; // will be an array of objects {key, label}
-  tableContainer = document.createElement("table");
-  headerElement = document.createElement("th");
-  rowElement = document.createElement("tr");
-  itemElement = document.createElement("td");
+  
   values = [];
   constructor(headers) {
     if (Array.isArray(headers) && headers.length > 0) {

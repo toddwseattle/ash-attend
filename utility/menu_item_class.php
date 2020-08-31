@@ -34,7 +34,7 @@ class menu_item_class implements i_snippet
       $this->help = $help;
     }
     $this->tag = new link_tag_class($link, $description, $id);
-    $this->tag->addCssClass('menu-item');
+    // $this->tag->addCssClass('menu-item');
     $this->min_role = $min_role;
   }
   function is_visible_for_role($role)
@@ -44,7 +44,11 @@ class menu_item_class implements i_snippet
   function get_html()
   {
     $this->update_html_tag();
-    return $this->tag->get_html();
+    $linkHtml = $this->tag->get_html();
+    $html = <<<__ITEM
+    <div class="menu-item"><span class="tooltip">$this->help</span>$linkHtml</div>
+__ITEM;
+    return $html;
   }
   function update_html_tag()
   {

@@ -83,9 +83,9 @@ function process_fields(event, formValidation) {
 }
 
 $(document).ready(() => {
-  const addFormValidation = new FormValidation(
+  const addFormValidation = new FormValidation({fields:
     addFormFields,
-    "#addStudentSubmit"
+   submitButtonId: "#addStudentSubmit"}
   );
   $("#addForm").on("change", addFormValidation.updateFromChange);
   $("#addForm").on("submit", (event) => {

@@ -6,7 +6,7 @@ This folder contains the example/spec for the json api between front end and bac
 
 Each file gives a JSON example of what the request is likely to look like; and a plausible response example and structure.
 
-the "request" key will be a post or a get (indicated here)
+Each API indicates whether it is an HTTP POST or an HTTP GET
 
 ## AJAX API's
 
@@ -66,20 +66,24 @@ add_user_action Adds a student to the system (only students) no password. requir
 }
 ```
 
-### [get_marks_by_student (GET)](./get_marks_by_student.json)
+### [get_marks_by_student (GET)](#)
+[Sample JSON](./get_marks_by_student.json)
 
 This passes a student id, and retrieves all the classes that they have marks for; as well as a map of each possible mark_status.
 
-Current format proposes a denormalized structure.
+Current format proposes a de-normalized structure.
 
-### [get_class_by_day (GET)](./get_class_by_day.json)
+### [get_class_by_day (GET)]()
+[Sample JSON](./get_class_by_day.json)
 #### GET
 ````json
 {
   class_date: SQL_DATE, i.e. "2020-09-14"
 }
-````json
+````
+
 #### response
+````json
 classes: [
   class_id:"",
   class_name:"",
@@ -87,18 +91,21 @@ classes: [
 ] 
 
 error: string
+````
 
-
-### [get_all_classes (GET)](./get_all_classes.json)
+### [get_all_classes (GET)](#)
+[Sample JSON](./get_all_classes.json)
 
 this returns the entire attend_class table from the database
 
-### [get_marks_by_class (GET)](./get_marks_by_class.json)
+### [get_marks_by_class (GET)](#)
+[Sample JSON](./get_marks_by_class.json)
 
 Retrieve all marks for a given class, including de-normalized student name and id.
 
-### [add_classes_action](actions/add_classes_action.php)
+### [add_classes_action (POST)](/actions/add_classes_action.php)
 
+[Sample JSON](./add_classes_action.json)
 #### Purpose
 
 add_classes_action adds a set of classes at once
@@ -125,11 +132,10 @@ new_classes: [
 
 ````json
  {"success" | "fail"}
+````
+### [login_action](/actions/login_action.php)
 
-### [login_action (POST)](./logon_action.json)
-
-### [login_action](actions/login_action.php)
-
+[Sample JSON](./logon_action.json)
 #### Purpose
 
 login_action is called to start a session by email id. The email id will already have been sanitized and a valid ashesi email format.

@@ -72,9 +72,22 @@ This passes a student id, and retrieves all the classes that they have marks for
 
 Current format proposes a denormalized structure.
 
-### [get_closest_class (GET)](./get_closest_class.json)
+### [get_class_by_day (GET)](./get_class_by_day.json)
+#### GET
+````json
+{
+  class_date: SQL_DATE, i.e. "2020-09-14"
+}
+````json
+#### response
+classes: [
+  class_id:"",
+  class_name:"",
+  class_date:
+] 
 
-This passes a date (What format?) and then it returns the class id closest in time to date. It will be used in the "mark current attendance" It should be any class within 24 hours prior of the requested date.
+error: string
+
 
 ### [get_all_classes (GET)](./get_all_classes.json)
 
@@ -96,25 +109,22 @@ by an admin to the attend_class table
 An array of classes:
 
 ```json
-[
+new_classes: [
   {
     "class_name": string,
     "class_date": sql_date
-  }
+  },
+  {
+    "class_name": string,
+    "class_date": sql_date
+  } // ...
 ]
 ```
 
 #### Response
 
 ````json
-  errors: {
-     // to be speced
-  },
-  added: [{
-      class_id: number,
-      class_name: string,
-      class_date: sql_date,
-  }]
+ {"success" | "fail"}
 
 ### [login_action (POST)](./logon_action.json)
 

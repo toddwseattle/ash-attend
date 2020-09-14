@@ -13,10 +13,9 @@ html {
 .title-box {
   background-color: var(--layout-bg);
   color: var(--layout-text);
-  margin: 0%;
   padding: 0%;
   display: flex;
-  flex-flow: row;
+  flex-flow: row wrap;
 }
 .title-box img {
   width: 100px;
@@ -26,6 +25,9 @@ html {
 }
 .title-box .title-tile {
   flex: 9 1;
+}
+.title-box .description {
+  flex: 100%;
 }
 .hero-box-container {
   background-color: var(--content-bg);
@@ -134,7 +136,9 @@ html {
   color: var(--content-text);
   width: 80%;
   border: 5px solid rgb(192, 155, 116);
-  margin: 0%;
+  margin: 1%;
+  align-self: center;
+  
   padding: 0%;
   display: flex;
   flex-flow: column wrap;

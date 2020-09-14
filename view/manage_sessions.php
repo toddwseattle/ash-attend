@@ -10,6 +10,21 @@
   <link rel="stylesheet" href="../css/attend.css">
 </head>
 <body>
+<?php
+include_once "attendance_menu.php";
+$attendance_menu = create_attendance_menu("Sessions");
+echo $attendance_menu->get_html();
+?>
+<header id="title" class="title-box">
+  <h1 id="title-text">Manage Sessions</h1>
+
+</header>
+
+<div class="form-box">
+    <p>Specify a Week for the class to start, the class start time each day, the number of weeks and the days on which the class occurs.
+      </p>
+      <p><strong>Generate Sessions</strong> to see the classes.  <strong>Finalize Sessions</strong> commits them to the database</p>
+</div>
 <form action="" class="form-box" id="gen-form">
     <div class="field-group" id="start-group">
         <label for="start">Monday of Start Week</label>

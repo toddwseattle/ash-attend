@@ -12,7 +12,7 @@ Each API indicates whether it is an HTTP POST or an HTTP GET
 
 The application implements the following AJAX API's. links go to the action folder and each is represented by it's linked php file.
 
-### [get_user](actions/get_user.php)
+### [get_user](/actions/get_user.php)
 
 #### Purpose
 
@@ -20,28 +20,28 @@ get_user retrieves a user from the user table by their user_id.
 
 #### GET
 
-```json
-{ "user_id": number }
+```js
+{ "user_id": id }
 ```
 
 #### Response
 
-```json
+```js
 {
   result: "success" | "failure",
   user : {
-        user_id : number,
-        user_fname : string,
-        user_lname : string,
-        user_gender : string,
-        user_email : string,
-        user_pass : string,
-        user_role : number,
-        user_status: number
+        user_id : id,
+        user_fname : "string",
+        user_lname : "string",
+        user_gender : "string",
+        user_email : "string",
+        user_pass : "string",
+        user_role : 1 | 2| 3, //  faculty, fi, student respectively
+        user_status: "success" | "pending" | "inactive" // 1,2,3
   }
 ```
 
-### [add_user_action](actions/add_user_action.php)
+### [add_user_action](/actions/add_user_action.php)
 
 #### Purpose
 
@@ -49,7 +49,7 @@ add_user_action Adds a student to the system (only students) no password. requir
 
 #### POST
 
-```json
+```js
 {
   "f_name": "Todd",
   "l_name": "Warren",
@@ -60,7 +60,7 @@ add_user_action Adds a student to the system (only students) no password. requir
 
 #### Response
 
-```json
+```js
 {
   "data": "success" | "duplicate" | "failed"
 }
@@ -76,21 +76,21 @@ Current format proposes a de-normalized structure.
 ### [get_class_by_day (GET)]()
 [Sample JSON](./get_class_by_day.json)
 #### GET
-````json
+```js
 {
   class_date: SQL_DATE, i.e. "2020-09-14"
 }
 ````
 
 #### response
-````json
+```js
 classes: [
   class_id:"",
   class_name:"",
   class_date:
 ] 
 
-error: string
+error: "string"
 ````
 
 ### [get_all_classes (GET)](#)
@@ -115,14 +115,14 @@ by an admin to the attend_class table
 
 An array of classes:
 
-```json
+```js
 new_classes: [
   {
-    "class_name": string,
+    "class_name": "string",
     "class_date": sql_date
   },
   {
-    "class_name": string,
+    "class_name": "string",
     "class_date": sql_date
   } // ...
 ]
@@ -130,7 +130,7 @@ new_classes: [
 
 #### Response
 
-````json
+```js
  {"success" | "fail"}
 ````
 ### [login_action](/actions/login_action.php)
@@ -142,7 +142,7 @@ login_action is called to start a session by email id. The email id will already
 
 #### POST
 
-```json
+```js
 {
   "email": "twarren@ashesi.edu.gh"
 }
@@ -150,9 +150,9 @@ login_action is called to start a session by email id. The email id will already
 
 #### Response
 
-```json
+```js
 {
   "result": "success" | "pending" | "inactive",
-  "url": string //url to redirect to
+  "url": "string" //url to redirect to
 }
 ```

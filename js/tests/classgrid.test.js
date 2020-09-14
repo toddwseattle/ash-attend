@@ -121,7 +121,7 @@ describe('ClassGrid Tests', () => {
                 expect(tt.children.length).toEqual(cls.length+1);                
             });
             it('should have a header in the first row', () => {
-                expect(tt.children[0].tagName).toEqual(cg.headerElement.tagName);
+                expect(tt.children[0].tagName).toEqual(cg.rowElement.tagName);
             });
             it('should create a row for each class passed to the grid', () => {
                 cls.forEach((cls,i)=> {

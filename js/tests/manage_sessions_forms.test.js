@@ -23,7 +23,7 @@ describe('generate sessions', () => {
             expect(newClass.length).toEqual(1);
         });
         it('the single member should have a class_date property that is a valid dateTime', () => {
-            expect(newClass[0].class_date).toEqual(new Date(`${gs.start} ${gs.time}`));
+            expect(newClass[0].class_date).toEqual(new Date(`${gs.start} ${gs.time} UTC`));
         });
         it('the single member should have a class_name that includes the description', () => {                
             expect(newClass[0].class_name.indexOf(gs.description)).toBeGreaterThanOrEqual(0);
@@ -55,11 +55,11 @@ describe('generate sessions', () => {
             });
         });
         it('should create the first entry equal to the start date', () => {
-            const firstMonday = new Date(`${gs.start} ${gs.time}`);
+            const firstMonday = new Date(`${gs.start} ${gs.time} UTC`);
             expect(newClasses[0].class_date).toEqual(firstMonday);
         });
         it('should create the 2nd entry a week later than the start', () => {
-            const firstMonday = new Date(`${gs.start} ${gs.time}`);
+            const firstMonday = new Date(`${gs.start} ${gs.time} UTC`);
             expect(newClasses[1].class_date.getTime()).toEqual(firstMonday.getTime()+msPerDay*7);
         });
         });

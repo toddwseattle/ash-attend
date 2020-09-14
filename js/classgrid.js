@@ -27,9 +27,9 @@ export function getClassTimeToString(d) {
         {key: 'class_name', label:"Name"}];
     }
     getHeaders() {
-        const headerRow = this.headerElement.cloneNode(false);
+        const headerRow = this.rowElement.cloneNode(false);
         this.columns.forEach((col) => {
-          const colEl = this.itemElement.cloneNode(false);
+          const colEl = this.headerElement.cloneNode(false);
           colEl.id = `${this.id}-${col.key}-hd`;
           colEl.innerHTML = col.label;
           headerRow.append(colEl);

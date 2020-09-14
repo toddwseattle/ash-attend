@@ -81,7 +81,7 @@ function submitButtonClick(event,classesToGen) {
   
   event.preventDefault();
   add_classes(classesToGen).then(result => {
-    console.log(result);
+    console.table(result);
   });
 }
 $(document).ready(() => {

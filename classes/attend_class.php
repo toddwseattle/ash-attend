@@ -56,7 +56,7 @@ class attend_class extends db_connection
 
     //Write the insert sql
     $sql = "INSERT INTO attend_class (`class_name`,`class_date`) 
-                VALUES($cleana, $cleanb)";
+                VALUES('$cleana', '$cleanb')";
 
     //execute the query
     return $this->db_query_escape_string($sql);

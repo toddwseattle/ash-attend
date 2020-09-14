@@ -9,6 +9,7 @@ import {
 } from "./form_validation.js";
 import { createSessionsFields, generateSessions } from "./manage_sessions_form.js";
 import { ClassGrid} from "./classgrid.js";
+import { addToMySQLFormat, convertToMySQLDates } from "./dateHelpers.js";
 function checkBasicText(text) {
   return text && text.length > 0 ? text : null;
 }
@@ -67,14 +68,17 @@ function generateSessionsClick(event,sessGenValid,classesToGen) {
   classesToGen.new_classes = sessGen;
   $("#submit").prop('disabled',false);
 }
+
 function add_classes(classActions) {
+  const sqlClasses = {new_classes: convertToMySQLDates(classActions.new_classes)};
   return new Promise((resolve,reject)=>{
-    $.post("../actions/add_classes_action.php",classActions)
+    $.post("../actions/add_classes_action.php",sqlClasses)
         .done(data=>resolve(data))
         .fail(error=> reject(error));
   })
 }
 function submitButtonClick(event,classesToGen) {
+  
   event.preventDefault();
   add_classes(classesToGen).then(result => {
     console.log(result);
@@ -82,9 +86,6 @@ function submitButtonClick(event,classesToGen) {
 }
 $(document).ready(() => {
   
-  
-
-  $(document).ready(() => {
     
     const sessGenValid = new FormValidation({fields:createSessionsFields,submitButtonId:"#generate"});
     sessGenValid.addFormValidatorFunction({
@@ -100,4 +101,3 @@ $(document).ready(() => {
     $("#generate").click((event)=>{generateSessionsClick(event,sessGenValid,classesToGen)});
     
   });
-});

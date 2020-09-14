@@ -16,7 +16,7 @@ export function generateSessions({start,time,description,dayMap,length}) {
     if( length===0) return([]);
      else if((length>0)&&start&&time&&description) {
         // in the case of no dayMap; just generate a single event without a day in the description
-        const eventTime = new Date(`${start} ${time}`);
+        const eventTime = new Date(`${start} ${time} UTC`);
         if(!dayMap&&(length===1)) {
 
             return [{class_date: eventTime, class_name: `${description}`}];

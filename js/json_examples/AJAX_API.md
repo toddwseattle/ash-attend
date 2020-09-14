@@ -111,7 +111,7 @@ An array of classes:
      // to be speced
   },
   added: [{
-    class_id: number,
+      class_id: number,
       class_name: string,
       class_date: sql_date,
   }]

@@ -10,23 +10,7 @@ import {
 import { createSessionsFields, generateSessions } from "./manage_sessions_form.js";
 import { ClassGrid} from "./classgrid.js";
 import { addToMySQLFormat, convertToMySQLDates } from "./dateHelpers.js";
-function checkBasicText(text) {
-  return text && text.length > 0 ? text : null;
-}
-function checkNumberNotZero(num) {
-  return +num > 0 ? +num : null;
-}
-function checkbox(check) {
-  return check;
-}
-function dateCheck(check) {
-  let value = null;
-  const d = new Date(check);
-  if (d) {
-     value = (d.getUTCDay()===1 && d.valueOf() > Date.now()) ? d : null;
-  }
-  return value;
-}
+
 /**
  * looks for Form interdependent field validation issues
  * @param {FormValidation} currentForm
@@ -77,14 +61,25 @@ function add_classes(classActions) {
         .fail(error=> reject(error));
   })
 }
+function generateSuccess(generatedClasses) {
+  const testCount = generatedClasses.new_classes.length;
+  const successMessage = `<p>${testCount} classes generated</p>`;
+  const generateArea = $("#sessions-to-create");
+  generateArea.empty();
+  generateArea.append(successMessage);
+
+}
 function submitButtonClick(event,classesToGen) {
   
   event.preventDefault();
   add_classes(classesToGen).then(result => {
+    if(result==='success') {
+      generateSuccess(classesToGen);
+    }
     console.table(result);
   });
 }
-$(document).ready(() => {
+$(() => {
   
     
     const sessGenValid = new FormValidation({fields:createSessionsFields,submitButtonId:"#generate"});
@@ -95,9 +90,9 @@ $(document).ready(() => {
     const submitButton = $('#submit')
     let classesToGen={new_classes:[]};
     submitButton.prop('disabled',true);
-    submitButton.click((event) => {submitButtonClick(event,classesToGen)})
+    submitButton.on('click',(event) => {submitButtonClick(event,classesToGen)})
 
     $("#gen-form").on("change", sessGenValid.updateFromChange);
-    $("#generate").click((event)=>{generateSessionsClick(event,sessGenValid,classesToGen)});
+    $("#generate").on('click',(event)=>{generateSessionsClick(event,sessGenValid,classesToGen)});
     
   });

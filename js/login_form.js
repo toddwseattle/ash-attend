@@ -34,7 +34,7 @@ function process_fields(event, loginForm) {
   const values = loginForm.values;
   check_login(values).then((response) => {
     let result_code = response && response.result ? response.result : response;
-    let url = response && response.url ? response.url : "/";
+    let url = response && response==="success" ? "../view/dashboard.php" : "../index.php";
     const resultErr = resultErrs.find((err) => result_code == err.id);
     if (resultErr) {
       loginForm.formResultsMessage(resultErr);

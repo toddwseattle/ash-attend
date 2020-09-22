@@ -25,7 +25,21 @@ function insert_new_class_session_ctr($a, $b){
 		return false;
 	}
 }
-
+function get_all_class_sessions() {
+	$get_classes = new attend_class();
+    if($get_classes->get_all_class_schedules()) {
+		if($get_classes->db_fetch()) {
+			return $get_classes->results;
+		} else 
+		{
+			echo "<p>didn't fetch</p>";
+			return [];
+		}
+	} else {
+		echo "<p>query problem</p>";
+		return [];
+	};
+}	
 
 
 ?>

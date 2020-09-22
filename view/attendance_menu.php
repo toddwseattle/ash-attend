@@ -9,7 +9,8 @@ function create_attendance_menu(string $select = "Dashboard")
   $menuItems = [
     new menu_item_class("Home", "/ash-attend", "Opening Screen", 3),
     new menu_item_class("Dashboard", "dashboard.php", "Your Dashboard", 3),
-    new menu_item_class("Record", "attendance_log.php", "Past Attendance", 3),
+    new menu_item_class("Mark", "mark_attendance.php","Mark attendance",3),
+    new menu_item_class("Past", "attendance_log.php", "Past Attendance", 3),
     new menu_item_class(
       "Add Student",
       "add_student.php",
@@ -22,6 +23,7 @@ function create_attendance_menu(string $select = "Dashboard")
       "Add, Remove, and Edit sessions",
       1
     ),
+    new menu_item_class("Logout","../login/logout.php","Log Out of Attendance system",3)
   ];
   $menu = new menu_class($menuItems);
   $curr_permission = get_user_permission();

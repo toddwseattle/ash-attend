@@ -3,7 +3,9 @@
  * Including field data; and main methods for different buttons.
  * 
  */
-export function generateSessions({start,time,description,dayMap,length}) {
+const msPerDay = 24 * 60 * 60 * 1000; // Number of milliseconds per day
+
+ export function generateSessions({start,time,description,dayMap,length}) {
     const weekday = new Array(7);
     weekday[0]="Monday";
     weekday[1]="Tuesday";
@@ -12,7 +14,6 @@ export function generateSessions({start,time,description,dayMap,length}) {
     weekday[4]="Friday";
     weekday[5]="Saturday";
     weekday[6]="Sunday";
-    const msPerDay = 24 * 60 * 60 * 1000; // Number of milliseconds per day
     if( length===0) return([]);
      else if((length>0)&&start&&time&&description) {
         // in the case of no dayMap; just generate a single event without a day in the description
@@ -59,7 +60,7 @@ function checkBasicText(text) {
     let value = null;
     const d = new Date(check);
     if (d) {
-       value = (d.getUTCDay()===1 && d.valueOf() > Date.now()) ? d : null;
+       value = (d.getUTCDay()===1) && (d.valueOf() >= Date.now() - 5* msPerDay) ? d : null;
     }
     return value ? check :null;
   }

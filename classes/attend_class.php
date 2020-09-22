@@ -198,7 +198,7 @@ class attend_class extends db_connection
     $sql = "SELECT * FROM attend_class";
 
     //execute the query
-    return $this->db_query($sql);
+     return $this->db_query($sql);
   }
 
   //--- UPDATE -------//

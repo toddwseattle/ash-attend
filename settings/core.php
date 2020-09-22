@@ -40,5 +40,13 @@ function get_user_id()
   	return $_SESSION['attend_user_id'];
   }
 }
-
+function get_user_display_name() {
+  if (isset($_SESSION["user_first"])&&isset($_SESSION["user_last"])) {
+    
+  	//return user id
+  	return $_SESSION["user_first"] . " ". $_SESSION["user_last"];
+  } else {
+    return "";
+  }
+}
 ?>

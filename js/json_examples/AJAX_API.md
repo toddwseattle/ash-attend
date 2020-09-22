@@ -80,7 +80,7 @@ Current format proposes a de-normalized structure.
 {
   class_date: SQL_DATE, i.e. "2020-09-14"
 }
-````
+```
 
 #### response
 ```js
@@ -91,7 +91,7 @@ classes: [
 ] 
 
 error: "string"
-````
+```
 
 ### [get_all_classes (GET)](#)
 [Sample JSON](./get_all_classes.json)
@@ -103,7 +103,28 @@ this returns the entire attend_class table from the database
 
 Retrieve all marks for a given class, including de-normalized student name and id.
 
+### [mark_attendance_action (Post)](/actions/mark_attendance_action.php)
+
+#### Purpose
+Marks attendance.  can only be activated by student on a current class.  creates something in the mar
+
+##### POST
+```js
+{
+  class_id:
+  user_id:
+  status: 0| 1 | 2 | 3 // absent, present, late, pending respectively
+}
+```
+
+##### response
+"success" | "fail"
+
+
+
 ### [add_classes_action (POST)](/actions/add_classes_action.php)
+
+
 
 [Sample JSON](./add_classes_action.json)
 #### Purpose
@@ -132,7 +153,7 @@ new_classes: [
 
 ```js
  {"success" | "fail"}
-````
+```
 ### [login_action](/actions/login_action.php)
 
 [Sample JSON](./logon_action.json)
@@ -146,7 +167,7 @@ login_action is called to start a session by email id. The email id will already
 {
   "email": "twarren@ashesi.edu.gh"
 }
-````
+```
 
 #### Response
 

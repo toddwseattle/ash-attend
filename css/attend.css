@@ -281,6 +281,8 @@ html {
 .form-box .check-title {
   margin-left: 3rem;
   font-size: 1.5em;
+  background-color: var(--action-bg);
+  color: var(--action-text);
 }
 /* The following  are taken from this fancy checkbox article: https://medium.com/mobile-app-developers/styling-checkbox-css-tips-e103c54ea1c7 */
 .form-box  .fancy-check-label {

@@ -16,9 +16,13 @@ $attendance_menu = create_attendance_menu("Mark");
 echo $attendance_menu->get_html();
 $display_name =get_user_display_name();
 echo "<p>";
-get_upcoming_class();
-echo "</p>";
-?>  
+$upcoming = get_upcoming_class();
+$message = "Upcoming class";
+if(count($upcoming)==1) {
+  $row=$upcoming[0];
+  $message= $row['class_name'] . " on ". $row['class_date'];
+}
+echo <<<__FORM
 <div id="title" class="title-box">
   <h1 id="title-text">Mark Attendance</h1>
 </div>
@@ -28,9 +32,11 @@ echo "</p>";
             <input type="checkbox" id="mark-present">
             <span class="fancy-check-custom rectangular"></span>
         </label>
-        <button class="check-title" id="mark-date">I'm intending:</button>
+        <span class="check-title" id="mark-date">I'm attending: $message </span>
 </div>
 <button type="submit">Submit Attendance</button>
 </form>
 </body>
 </html>
+__FORM;
+?>  

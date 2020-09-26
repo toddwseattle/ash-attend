@@ -82,7 +82,7 @@ function process_fields(event, formValidation) {
     });
 }
 
-$(document).ready(() => {
+$(() => {
   const addFormValidation = new FormValidation({fields:
     addFormFields,
    submitButtonId: "#addStudentSubmit"}

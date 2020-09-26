@@ -195,7 +195,7 @@ class attend_class extends db_connection
   public function get_all_class_schedules()
   {
     //a query to get all classes
-    $sql = "SELECT * FROM attend_class";
+    $sql = "SELECT * FROM attend_class ORDER BY class_date";
 
     //execute the query
      return $this->db_query($sql);

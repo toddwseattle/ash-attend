@@ -284,6 +284,28 @@ html {
   background-color: var(--action-bg);
   color: var(--action-text);
 }
+.form-box span .tooltip {
+  visibility: hidden;
+  width: 300px;
+  /* top: 75%;
+  left: 5%; */
+  left: 100px;
+  background-color: var(--layout-bg);
+  color: red;
+  border-radius: 6px;
+  border-width: 2px;
+  border-color: var(--layout-text);
+  border-style: solid;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  font-size: 0.75em;
+}
+
+.form-box span:hover .tooltip {
+  visibility:visible;
+}
+
 /* The following  are taken from this fancy checkbox article: https://medium.com/mobile-app-developers/styling-checkbox-css-tips-e103c54ea1c7 */
 .form-box  .fancy-check-label {
   position: relative;
@@ -326,10 +348,11 @@ html {
   -ms-transform: rotate(0deg) scale(1);
   transform: rotate(0deg) scale(1);
   opacity:1;
-  border: 2px solid #FFFFFF;
+  border: 2px solid  #FFFFFF;
 }
-
-
+.form-box .disabled-check input:checked ~ .fancy-check-custom  {
+  border: 2px solid gray;
+}
 .form-box  .fancy-check-label .fancy-check-custom::after {
   position: absolute;
   content: "";
@@ -366,7 +389,6 @@ border-width: 0 2px 2px 0;
 background-color: transparent;
 border-radius: 0;
 }
-
 
 
 /* For Ripple Effect */

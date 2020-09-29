@@ -136,22 +136,6 @@ class attend_class extends db_connection
     return $this->db_query($sql);
   }
 
-  // /**
-  // *method for view all attendance by pagination
-  // *takes start and limit
-  // */
-  // public function view_all_attendance_pagination($start, $limit){
-  // 	//a query to get all attendance information for pagination
-  // 	$sql = "SELECT * FROM attend_mark WHERE `user_role` = 2 ORDER BY `mark_class_id` DESC LIMIT $start, $limit";
-
-  // 	//execute the query
-  // 	return $this->db_query($sql);
-  // }
-
-  /**
-   *method to count all attendance for a particular class schedule
-   *takes class id
-   */
   public function count_class_attendance($a)
   {
     //a query to get all information
@@ -166,11 +150,25 @@ class attend_class extends db_connection
    *method to get students attendance
    *takes student id
    */
-  public function get_student_attendance($a)
+  public function get_a_student_attendance($a)
   {
     //a query to get student's attendance
     $sql = "SELECT * FROM attend_mark
-		WHERE mark_status = 1 AND mark_student_id = $a";
+		WHERE mark_student_id = $a";
+
+    //execute the query
+    return $this->db_query($sql);
+  }
+
+  /**
+   *method to get all pending attendance
+   *pending status is 2
+   */
+  public function get_all_pending_attendance()
+  {
+    //a query to get student's attendance
+    $sql = "SELECT * FROM attend_mark
+		WHERE mark_status = 2";
 
     //execute the query
     return $this->db_query($sql);
@@ -200,6 +198,19 @@ class attend_class extends db_connection
     //execute the query
      return $this->db_query($sql);
   }
+  
+  /**
+   *method to get class attenddance by id
+   *takes class id
+   */
+  public function get_attendance_by_class($a)
+  {
+    //a query to get a class by id
+    $sql = "SELECT * FROM attend_mark WHERE mark_class_id=$a";
+
+    //execute the query
+    return $this->db_query($sql);
+  }
 
   //--- UPDATE -------//
 
@@ -222,14 +233,14 @@ class attend_class extends db_connection
   // *method to delete a student
   // *takes student id
   // */
-  public function delete_student($a){
+  // public function delete_student($a){
 
-  	//a query to delete a course
-  	$sql = "DELETE FROM attend_users WHERE user_id=$a";
+  // 	//a query to delete a course
+  // 	$sql = "DELETE FROM attend_users WHERE user_id=$a";
 
-  	//execute the query
-  	return $this->db_query($sql);
-  }
+  // 	//execute the query
+  // 	return $this->db_query($sql);
+  // }
 }
 
 ?>

@@ -222,14 +222,14 @@ class attend_class extends db_connection
   // *method to delete a student
   // *takes student id
   // */
-  // public function delete_student($a){
+  public function delete_student($a){
 
-  // 	//a query to delete a course
-  // 	$sql = "DELETE FROM attend_users WHERE user_id=$a";
+  	//a query to delete a course
+  	$sql = "DELETE FROM attend_users WHERE user_id=$a";
 
-  // 	//execute the query
-  // 	return $this->db_query($sql);
-  // }
+  	//execute the query
+  	return $this->db_query($sql);
+  }
 }
 
 ?>

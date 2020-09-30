@@ -89,7 +89,7 @@ function checkBasicText(text) {
       minCheck: 0,
     },
     {
-      id: "#start",
+      id: "#start", 
       description: "When to start",
       check: dateCheck,
       invalidMessage: "Should be a monday in the future",
@@ -114,7 +114,7 @@ function checkBasicText(text) {
       check: checkbox,
       description: "Occurs on Wednesday",
       invalidMessage: "",
-      name: "wednesday",
+      name: "Wednesday",
     },
     {
       id: "#Thursday",

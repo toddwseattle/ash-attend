@@ -40,7 +40,8 @@ if(!(isset($_POST)&&isset($_POST["present"])))  { // then the form has not yet b
             $diff =$now->diff($ct_time); 
             // echo "<p>" . $diff->h . " hours " . $diff->m ." minutes </p> ";
           //  echo "<p>Class " . $ct['class_name'] . $ct['class_date'] . " is difference " . $diff->format("%R%a%H:%i:%s") . " " . ($diff->h*60+$diff->m*60) . "</p>";
-            if(($diff->h*60+$diff->m) < 100) {
+          // see if it's within about 100 minutes of start of class 
+          if(($diff->h*60+$diff->m) < 100) {
               $row=$ct;
             break;
             } 

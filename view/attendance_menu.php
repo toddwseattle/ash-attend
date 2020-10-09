@@ -23,6 +23,7 @@ function create_attendance_menu(string $select = "Dashboard")
       "Add, Remove, and Edit sessions",
       1
     ),
+    new menu_item_class("Approve","manage_attendance.php","Approve or manage pending attendance", 2),
     new menu_item_class("Logout","../login/logout.php","Log Out of Attendance system",3)
   ];
   $menu = new menu_class($menuItems);
